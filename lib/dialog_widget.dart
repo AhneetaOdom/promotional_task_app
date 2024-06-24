@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:promotional_task3/dialog_button.dart';
-import 'package:promotional_task3/overlay_widget.dart';
-
 class DialogWidget extends StatefulWidget {
   const DialogWidget(
       {super.key,
@@ -40,7 +38,7 @@ class _DialogWidgetState extends State<DialogWidget> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      content: Container(
+      content:Container(
         height: 210,
         child: Column(
           children: [

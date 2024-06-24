@@ -3,7 +3,6 @@ import 'package:promotional_task3/home_page.dart';
 import 'package:promotional_task3/secondary_button.dart';
 import 'package:promotional_task3/button_widget.dart';
 
-
 class CreateAccountPage extends StatefulWidget {
   const CreateAccountPage({super.key});
 
@@ -13,15 +12,13 @@ class CreateAccountPage extends StatefulWidget {
 
 class _CreateAccountPageState extends State<CreateAccountPage> {
   final _formKey = GlobalKey<FormState>();
-  var passwordController = TextEditingController();
-  final nameController = TextEditingController();
-  var emailController = TextEditingController();
-  bool obscureText = false;
-  bool checkCondition = false;
-  void validate({context, key}) {
-    if (key.currentState!.validate()) {
-      key.currentState!.save();
+  final isLoading = false;
+  void _submit() {
+    final isValid = _formKey.currentState!.validate();
+    if (!isValid) {
+      return;
     }
+    _formKey.currentState!.save();
     Navigator.of(context).push(
       MaterialPageRoute(builder: (context) => const HomePage()),
     );
@@ -43,7 +40,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                       "Create Account",
                       style: TextStyle(
                         fontSize: 30,
-          
                       ),
                       textAlign: TextAlign.left,
                     ),
@@ -61,17 +57,14 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     height: 8,
                   ),
                   TextFormField(
-                    controller: nameController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     validator: (value) {
-                      if (value == null ||
-                          value.trim().length <= 1 ||
-                          value.isEmpty) {
-                        return "Must have more than 2 characters ";
+                      if (value!.isEmpty || value.length <= 3) {
+                        return "Must have more than 4 characters ";
                       }
                       return null;
                     },
@@ -87,24 +80,23 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     height: 7,
                   ),
                   TextFormField(
-                      controller: emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter an email address';
-                        } else if (!RegExp(
-                                r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
-                            .hasMatch(value)) {
-                          return 'Please input a valid email address';
-                        }
-
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      )),
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter an email address';
+                      } else if (!RegExp(
+                              r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$')
+                          .hasMatch(value)) {
+                        return 'Please input a valid email address';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
                   const SizedBox(
                     height: 30,
                   ),
@@ -116,26 +108,13 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     height: 7,
                   ),
                   TextFormField(
-                      controller: passwordController,
                       validator: (value) {
-                        if (value == null ||
-                            value.isEmpty ||
-                            value.trim().length < 8) {
+                        if (value!.isEmpty || value.length < 8) {
                           return "Password must Contain atleast 8 characters";
                         }
                         return null;
                       },
-                      obscureText: !obscureText,
                       decoration: InputDecoration(
-                        suffixIcon: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                obscureText = !obscureText;
-                              });
-                            },
-                            child: obscureText
-                                ? const Icon(Icons.remove_red_eye_outlined)
-                                : const Icon(Icons.remove_red_eye)),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -143,10 +122,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   const SizedBox(
                     height: 6,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 10),
                     child: Row(
-                      children: const [
+                      children: [
                         Icon(
                           Icons.check_circle_outline_rounded,
                           color: Colors.black26,
@@ -190,13 +169,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                       ],
                     ),
                   ),
-                  ElevatedButton(
-                    child: const Text("Register"),
-                    onPressed: () {
-                      validate(
-                        context: context,
-                        key: _formKey,
-                      );
+                  ButtonWidget(
+                    text: 'Register',
+                    clickButton: () {
+                      _submit();
                     },
                   ),
                   const Padding(
@@ -213,9 +189,9 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     padding: EdgeInsets.only(top: 15.0, bottom: 15),
                     child: SecondaryButton(),
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text(
                         'Dont Have an Account?',
                         style: TextStyle(fontSize: 14),

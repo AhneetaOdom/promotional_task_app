@@ -12,7 +12,7 @@ class DialogButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: Color.fromARGB(255, 79, 121, 192),
+      color:const Color.fromARGB(255, 79, 121, 192),
       onPressed: onPressed,
       child: Text(
         text,

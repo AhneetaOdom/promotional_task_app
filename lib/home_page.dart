@@ -3,7 +3,7 @@ import 'package:promotional_task3/dialog_widget.dart';
 import 'package:promotional_task3/home_container.dart';
 import 'package:promotional_task3/overlay_widget.dart';
 import 'package:promotional_task3/task_list.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -44,8 +44,8 @@ class _HomePageState extends State<HomePage> {
       taskList.add([_controller1.text, _controller2.text, false]);
       _controller1.clear();
       _controller2.clear();
-      Navigator.of(context).pop();
     });
+    Navigator.of(context).pop();
   }
 
   void onEditTask(taskIndex, text1, text2) {
@@ -54,8 +54,8 @@ class _HomePageState extends State<HomePage> {
       taskList[taskIndex][1] = text2;
       _controller1.clear();
       _controller2.clear();
-      Navigator.of(context).pop();
     });
+    Navigator.of(context).pop();
   }
 
   //delete Task
@@ -64,7 +64,6 @@ class _HomePageState extends State<HomePage> {
       taskList.removeAt(index);
     });
   }
-
 
   //create Task
   void createTask({bool editMode = false, List? taskInfo, int? taskIndex}) {
@@ -81,6 +80,7 @@ class _HomePageState extends State<HomePage> {
             controller2: _controller2,
             onSave: () {
               saveTask();
+              Navigator.of(context).pop();
             },
             onCancel: () {},
           );
@@ -185,7 +185,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: 4),
               child: Text(
                 '2024,Feb. 17',
                 style: TextStyle(color: Colors.grey.shade500, fontSize: 12),

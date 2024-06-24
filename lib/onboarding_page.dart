@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:promotional_task3/button_widget.dart';
-import 'package:promotional_task3/create_account_page.dart';
+import 'create_account_page.dart';
 
 
 class OnboardingPage extends StatelessWidget {
@@ -55,13 +55,13 @@ class OnboardingPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 50, bottom: 30),
+              padding:const EdgeInsets.only(top: 50, bottom: 30),
               child: ButtonWidget(
                 text: 'Continue',
                 clickButton: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CreateAccountPage()),
+                    MaterialPageRoute(builder: (context) =>CreateAccountPage()),
                   );
                 },
               ),
