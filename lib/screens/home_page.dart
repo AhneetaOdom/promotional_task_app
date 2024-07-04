@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:promotional_task3/dialog_widget.dart';
-import 'package:promotional_task3/home_container.dart';
-import 'package:promotional_task3/overlay_widget.dart';
-import 'package:promotional_task3/task_list.dart';
+import 'package:promotional_task3/widgets/reusable_widgets/dialog_widget.dart';
+import 'package:promotional_task3/widgets/reusable_widgets/home_container.dart';
+import 'package:promotional_task3/widgets/reusable_widgets/overlay_widget.dart';
+import 'package:promotional_task3/widgets/reusable_widgets/task_list.dart';
+
 
 
 class HomePage extends StatefulWidget {
@@ -265,10 +266,10 @@ class _HomePageState extends State<HomePage> {
                         onChanged: (value) {
                           toggleTaskCompletion(index, value);
                         },
-                        onDelete: (BuildContext) {
+                        onDelete: (buildContext) {
                           (value) => deleteTask(index);
                         },
-                        onEdit: (BuildContext) {
+                        onEdit: (buildContext) {
                           createTask(
                               editMode: true,
                               taskInfo: taskList[index],

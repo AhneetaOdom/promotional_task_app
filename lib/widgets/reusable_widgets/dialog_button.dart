@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:promotional_task3/utils/constants/colors.dart';
 class DialogButton extends StatelessWidget {
   const DialogButton({
     super.key,
@@ -12,11 +12,11 @@ class DialogButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color:const Color.fromARGB(255, 79, 121, 192),
+      color: primaryColor,
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color:white),
       ),
     );
   }

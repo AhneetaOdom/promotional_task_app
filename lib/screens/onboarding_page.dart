@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:promotional_task3/button_widget.dart';
+import 'package:get/get.dart';
+import 'package:promotional_task3/widgets/reusable_widgets/button_widget.dart';
+import 'package:promotional_task3/utils/constants/colors.dart';
+import 'package:promotional_task3/utils/constants/images.dart';
+import 'package:promotional_task3/utils/constants/size.dart';
 import 'create_account_page.dart';
-
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -14,7 +17,7 @@ class OnboardingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset('assets/onboarding1.png'),
+            Image.asset(AppImages.onboardingImage),
             RichText(
               textAlign: TextAlign.center,
               softWrap: true,
@@ -23,23 +26,23 @@ class OnboardingPage extends StatelessWidget {
                   TextSpan(
                     text: 'Welcome To Life Organise',
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold),
+                        color: black,
+                        fontSize: AppSize.fontSizeXlg,
+                        fontWeight: AppSize.fontWeightBold),
                   ),
                   TextSpan(
                     text: ' Task App ',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 79, 121, 192),
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold),
+                        color: primaryColor,
+                        fontSize: AppSize.fontSizeXlg,
+                        fontWeight: AppSize.fontWeightBold),
                   ),
                   TextSpan(
                     text: '!',
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold),
+                        color: black,
+                        fontSize: AppSize.fontSizeXlg,
+                        fontWeight: AppSize.fontWeightBold),
                   ),
                 ],
               ),
@@ -51,18 +54,21 @@ class OnboardingPage extends StatelessWidget {
                 'This application Will Help You Organise every little task in your life.',
                 textAlign: TextAlign.center,
                 softWrap: true,
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: TextStyle(color: black, fontSize: AppSize.fontSizeMd),
               ),
             ),
             Padding(
-              padding:const EdgeInsets.only(top: 50, bottom: 30),
+              padding: const EdgeInsets.only(top: 50, bottom: 30),
+              
               child: ButtonWidget(
                 text: 'Continue',
                 clickButton: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>CreateAccountPage()),
-                  );
+                  Get.off( const CreateAccountPage());
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //       builder: (context) => const CreateAccountPage()),
+                  // );
                 },
               ),
             ),
@@ -71,10 +77,16 @@ class OnboardingPage extends StatelessWidget {
               children: [
                 Text(
                   'Already Have An Account?',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                  style: TextStyle(
+                      fontSize: AppSize.fontSizeSm,
+                      fontWeight: AppSize.fontWeightNormal),
                 ),
-                Text(' Create Account',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold))
+                Text(
+                  ' Create Account',
+                  style: TextStyle(
+                      fontSize: AppSize.fontSizeSm,
+                      fontWeight: AppSize.fontWeightNormal),
+                ),
               ],
             )
           ]),

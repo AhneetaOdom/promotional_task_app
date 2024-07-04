@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:promotional_task3/utils/constants/colors.dart';
 
 class SecondaryButton extends StatelessWidget {
   const SecondaryButton({super.key});
@@ -8,7 +9,7 @@ class SecondaryButton extends StatelessWidget {
     return Container(
       height: 40,
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: Colors.black12),
+        border: Border.all(width: 1, color: primaryColor),
         borderRadius: BorderRadius.circular(20),
       ),
       child: const Row(

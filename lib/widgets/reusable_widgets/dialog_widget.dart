@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:promotional_task3/dialog_button.dart';
+import 'package:promotional_task3/utils/constants/size.dart';
+import 'package:promotional_task3/widgets/reusable_widgets/dialog_button.dart';
 class DialogWidget extends StatefulWidget {
   const DialogWidget(
       {super.key,
@@ -38,7 +39,7 @@ class _DialogWidgetState extends State<DialogWidget> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      content:Container(
+      content:SizedBox(
         height: 210,
         child: Column(
           children: [
@@ -46,19 +47,20 @@ class _DialogWidgetState extends State<DialogWidget> {
               controller: widget.controller1,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Create a Task Title'),
+                  hintText: 'Enter the Task Title'),
             ),
             const SizedBox(
-              height: 20,
+              height: AppSize.defaultSpace,
             ),
             TextField(
               controller: widget.controller2,
               decoration: const InputDecoration(
-                  border: OutlineInputBorder(), hintText: 'Create a Task'),
+                  border: OutlineInputBorder(), hintText: 'Enter the Task Description'),
             ),
             const SizedBox(
-              height: 15,
+              height: AppSize.mediumDefaultSpace,
             ),
+            
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

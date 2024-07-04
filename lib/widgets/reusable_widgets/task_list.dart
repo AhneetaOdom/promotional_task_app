@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:promotional_task3/utils/constants/colors.dart';
+import 'package:promotional_task3/utils/constants/size.dart';
 
 
 class TaskList extends StatelessWidget {
@@ -27,17 +29,17 @@ class TaskList extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: Slidable(
         endActionPane: ActionPane(
-          motion: StretchMotion(),
+          motion: const StretchMotion(),
           children: [
             SlidableAction(
               onPressed: onDelete,
               icon: Icons.delete_outline,
-              backgroundColor: Colors.red,
+              backgroundColor: red,
               borderRadius: BorderRadius.circular(8),
             ),
             SlidableAction(
               onPressed: onEdit,
-              backgroundColor: Colors.grey,
+              backgroundColor: grey,
               icon: Icons.edit,
               borderRadius: BorderRadius.circular(8),
             ),
@@ -46,7 +48,7 @@ class TaskList extends StatelessWidget {
         child: Container(
           width: 327,
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              color: white, borderRadius: BorderRadius.circular(10)),
           child: Padding(
             padding: const EdgeInsets.only(top: 8, bottom: 8),
             child: Row(
@@ -57,14 +59,14 @@ class TaskList extends StatelessWidget {
                   children: [
                     Text(
                       taskInfo[0],
-                      style: TextStyle(fontSize: 10, color: Colors.grey),
+                      style: const TextStyle(fontSize: AppSize.fontSizeXxs, color: grey),
                     ),
                     Text(
                       text2,
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                      style: const TextStyle(
+                          fontSize: AppSize.fontSizeMd,
+                          fontWeight: AppSize.fontWeightBold,
+                          color: black),
                     )
                   ],
                 )

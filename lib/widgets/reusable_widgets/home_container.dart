@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:promotional_task3/utils/constants/colors.dart';
+import 'package:promotional_task3/utils/constants/size.dart';
 
 class HomeContainer extends StatelessWidget {
-  HomeContainer({super.key, required this.text1, required this.text2, required this.total});
+  const HomeContainer({super.key, required this.text1, required this.text2, required this.total});
 
   final String text1;
   final String text2;
@@ -13,7 +15,7 @@ class HomeContainer extends StatelessWidget {
       width: 150,
       height: 150,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(20)),
+          color: white, borderRadius: BorderRadius.circular(20)),
       child: Padding(
         padding:
             const EdgeInsets.only(left: 15, right: 20, top: 20, bottom: 25),
@@ -25,28 +27,28 @@ class HomeContainer extends StatelessWidget {
               height: 30,
               width: 30,
               decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: Colors.blue.shade50),
+                  shape: BoxShape.circle, color: primaryColor50),
               child: Text(
                 text1,
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(height: 15),
+           const SizedBox(height: AppSize.mediumDefaultSpace),
             Text(
               text2,
               style: TextStyle(
-                  color: Colors.grey.shade500,
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400),
+                  color: grey50,
+                  fontSize: AppSize.fontSizeXxs,
+                  fontWeight: AppSize.fontWeightW400),
             ),
-            SizedBox(height: 15),
+          const SizedBox(height: AppSize.mediumDefaultSpace),
             Text(
               total.toString(),
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-            )
+              style: const TextStyle(
+                  color: black,
+                  fontSize: AppSize.fontSizeBg,
+                  fontWeight: AppSize.fontWeightBold),
+            ),
           ],
         ),
       ),

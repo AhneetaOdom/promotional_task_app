@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:promotional_task3/utils/constants/colors.dart';
+import 'package:promotional_task3/utils/constants/size.dart';
 
 class OverlayPage extends StatelessWidget {
   const OverlayPage({super.key});
@@ -26,19 +28,19 @@ class Create extends StatelessWidget {
       child: Row(
         children: [
           Text(text),
-          SizedBox(
-            width: 8,
+         const SizedBox(
+            width: AppSize.spaceBfrFields
           ),
           Container(
               height: 40,
               width: 40,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color.fromARGB(255, 79, 121, 192),
+                color:primaryColor,
               ),
               child: Icon(
                 iconss,
-                color: Colors.white,
+                color: white,
               ))
         ],
       ),

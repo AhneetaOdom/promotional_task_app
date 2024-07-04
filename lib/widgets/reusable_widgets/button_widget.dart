@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:promotional_task3/utils/constants/colors.dart';
 
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({super.key, required this.text, this.clickButton});
@@ -9,14 +10,14 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-        color: const Color.fromARGB(255, 79, 121, 192),
+        color: primaryColor,
         height: 48,
         minWidth: 327,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         onPressed: clickButton,
         child: Text(
           text,
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: white),
         ));
   }
 }
