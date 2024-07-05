@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:promotional_task3/screens/home_page.dart';
+import 'package:promotional_task3/screens/onboarding_page.dart';
 
 
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home:OnboardingPage(),
     );
   }
 }
