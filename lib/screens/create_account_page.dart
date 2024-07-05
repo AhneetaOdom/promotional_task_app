@@ -162,7 +162,7 @@ class CreateAccountPage extends StatelessWidget {
                     text: 'Register',
                     clickButton: () {
                       controller.submit();
-                      Get.off(Home());
+                     
                     },
                   ),
                   const SizedBox(

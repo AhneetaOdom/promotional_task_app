@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:promotional_task3/screens/home_page.dart';
 
 class CreateAccountController extends GetxController {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
@@ -17,8 +18,6 @@ class CreateAccountController extends GetxController {
     passwordController = TextEditingController();
     super.onInit();
   }
-
- 
 
   @override
   void onClose() {
@@ -61,6 +60,7 @@ class CreateAccountController extends GetxController {
       return;
     }
     loginFormKey.currentState!.save();
+    Get.off(Home());
   }
 }
 
