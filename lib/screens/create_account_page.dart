@@ -16,7 +16,7 @@ class CreateAccountPage extends StatelessWidget {
       body: SafeArea(
         child: Form(
             key: controller.loginFormKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            // autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
               child: ListView(

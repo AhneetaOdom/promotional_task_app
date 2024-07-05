@@ -3,7 +3,11 @@ import 'package:promotional_task3/utils/constants/colors.dart';
 import 'package:promotional_task3/utils/constants/size.dart';
 
 class HomeContainer extends StatelessWidget {
-  const HomeContainer({super.key, required this.text1, required this.text2, required this.total});
+  const HomeContainer(
+      {super.key,
+      required this.text1,
+      required this.text2,
+      required this.total});
 
   final String text1;
   final String text2;
@@ -13,9 +17,9 @@ class HomeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 150,
-      height: 150,
-      decoration: BoxDecoration(
-          color: white, borderRadius: BorderRadius.circular(20)),
+      height: 170,
+      decoration:
+          BoxDecoration(color: white, borderRadius: BorderRadius.circular(20)),
       child: Padding(
         padding:
             const EdgeInsets.only(left: 15, right: 20, top: 20, bottom: 25),
@@ -26,14 +30,14 @@ class HomeContainer extends StatelessWidget {
               alignment: Alignment.center,
               height: 30,
               width: 30,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: primaryColor50),
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: primaryColor50),
               child: Text(
                 text1,
                 textAlign: TextAlign.center,
               ),
             ),
-           const SizedBox(height: AppSize.mediumDefaultSpace),
+            const SizedBox(height: AppSize.mediumDefaultSpace),
             Text(
               text2,
               style: TextStyle(
@@ -41,7 +45,7 @@ class HomeContainer extends StatelessWidget {
                   fontSize: AppSize.fontSizeXxs,
                   fontWeight: AppSize.fontWeightW400),
             ),
-          const SizedBox(height: AppSize.mediumDefaultSpace),
+            const SizedBox(height: AppSize.mediumDefaultSpace),
             Text(
               total.toString(),
               style: const TextStyle(
