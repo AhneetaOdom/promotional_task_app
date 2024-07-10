@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:promotional_task3/screens/home_page.dart';
+
 import 'package:promotional_task3/utils/constants/colors.dart';
 import 'package:promotional_task3/controllers/create_account_controller.dart';
 import 'package:promotional_task3/utils/constants/size.dart';

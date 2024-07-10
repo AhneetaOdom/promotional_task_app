@@ -29,10 +29,12 @@ class HomePageController extends GetxController {
     String text2 = desEditingController!.text;
     DateTime time = DateTime.now();
 
-    taskList.add(Task(
+   _taskList.add(Task(
       text1,
       text2,
       time.day.toString(),
+      completed:false
+      
     ));
   }
 
@@ -41,4 +43,20 @@ class HomePageController extends GetxController {
   }
 
   void editTask(Task task) {}
+
+ // total completed count
+  void toggleTaskCompletion(Task task) {
+    task.completed = !task.completed;
+    _taskList.refresh();
+  }
+
+  int noOfCompletedTask() {
+    int count = 0;
+    for (final task in _taskList) {
+      if (task.completed) {
+        count++;
+      }
+    }
+    return count;
+  }
 }

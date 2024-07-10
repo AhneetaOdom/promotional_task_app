@@ -60,7 +60,7 @@ class CreateAccountController extends GetxController {
       return;
     }
     loginFormKey.currentState!.save();
-    Get.off(Home());
+    Get.off(const Home());
   }
 }
 

@@ -10,10 +10,14 @@ class TaskCard extends StatelessWidget {
     required this.textDescription,
     required this.time,
     required this.press,
+required this.taskCompleted,
+      required this.onChanged,
   });
 
   final String textName, textDescription, time;
   final VoidCallback press;
+  final Function(bool?)? onChanged;
+  final bool taskCompleted;
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +39,14 @@ class TaskCard extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {},
-                    child: Container(
-                      height: 25,
-                      width: 25,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: primaryColor, width: 1.5),
-                          shape: BoxShape.circle),
-                    ),
+                    child:  Checkbox(value: taskCompleted, onChanged: onChanged),
+                    // child: Container(
+                    //   height: 25,
+                    //   width: 25,
+                    //   decoration: BoxDecoration(
+                    //       border: Border.all(color: primaryColor, width: 1.5),
+                    //       shape: BoxShape.circle),
+                    // ),
                   ),
                   const SizedBox(
                     width: AppSize.smallDefaultSpace,
@@ -107,6 +112,7 @@ class TaskCard extends StatelessWidget {
                 ],
               )
             ],
+          
           ),
         ),
       ),

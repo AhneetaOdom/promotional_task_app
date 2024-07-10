@@ -10,11 +10,12 @@ import 'package:promotional_task3/widgets/reusable_widgets/home_container.dart';
 import '../widgets/task_card.dart';
 
 class Home extends StatelessWidget {
-  Home({super.key});
-  final HomePageController controller = Get.put(HomePageController());
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final HomePageController controller = Get.put(HomePageController());
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
@@ -87,21 +88,21 @@ class Home extends StatelessWidget {
                   )
                 ],
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(top: 15, bottom: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    HomeContainer(
-                      total: 1,
-                      text1: '📦',
-                      text2: 'Total Number of Tasks',
-                    ),
-                    HomeContainer(
-                      total: 2,
-                      text1: '🙌',
-                      text2: 'Total Number of Completed Tasks',
-                    ),
+                   Obx(() => HomeContainer(
+                          total: controller.taskList.length,
+                          text1: '📦',
+                          text2: 'Total Number of Tasks',
+                        )),
+                    Obx(() => HomeContainer(
+                          total: controller.noOfCompletedTask(),
+                          text1: '🙌',
+                          text2: 'Total Number of Completed Tasks',
+                        )),
                   ],
                 ),
               ),
@@ -127,14 +128,17 @@ class Home extends StatelessWidget {
                     itemCount: controller.taskList.length,
                     itemBuilder: (context, index) {
                       return TaskCard(
-                        textName: controller.taskList[index].taskTitle,
-                        textDescription:
-                            controller.taskList[index].taskDescription,
-                        time: controller.taskList[index].taskCreated,
-                        press: () {
-                          controller.deleteTask(controller.taskList[index]);
-                        },
-                      );
+                          textName: controller.taskList[index].taskTitle,
+                          textDescription:
+                              controller.taskList[index].taskDescription,
+                          time: controller.taskList[index].taskCreated,
+                          press: () {
+                            controller.deleteTask(controller.taskList[index]);
+                          },
+                          onChanged: (bool? value) {
+                            controller.toggleTaskCompletion(
+                                controller.taskList[index]);
+                          }, taskCompleted: controller.taskList[index].completed,);
                     },
                   ),
                 ),
