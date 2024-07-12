@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
+import 'package:intl/intl.dart';
 
 import '../widgets/reusable_widgets/task.dart';
 
 class HomePageController extends GetxController {
   final _taskList = <Task>[].obs;
+   String time = DateFormat.yMMMEd().format(DateTime.now());
 
   List<Task> get taskList => _taskList;
   TextEditingController? titleEditingController, desEditingController;
@@ -27,22 +29,27 @@ class HomePageController extends GetxController {
   void addTask() {
     String text1 = titleEditingController!.text;
     String text2 = desEditingController!.text;
-    DateTime time = DateTime.now();
-
-   _taskList.add(Task(
-      text1,
-      text2,
-      time.day.toString(),
-      completed:false
-      
-    ));
+   
+     _taskList.add(Task(
+        taskTitle: text1,
+        taskDescription: text2,
+        taskCreated: time,
+        completed: false));
   }
 
   void deleteTask(Task task) {
     taskList.remove(task);
   }
 
-  void editTask(Task task) {}
+  void editTask(int taskIndex) {
+    //###
+    taskList[taskIndex] = Task(
+        taskTitle: titleEditingController!.text,
+        taskDescription: desEditingController!.text,
+        taskCreated: taskList[taskIndex].taskCreated,
+        completed: taskList[taskIndex].completed);
+    //###
+  }
 
  // total completed count
   void toggleTaskCompletion(Task task) {

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../utils/constants/colors.dart';
 import '../utils/constants/size.dart';
+import 'reusable_widgets/addtask_dialog_widget.dart';
 
 class TaskCard extends StatelessWidget {
   const TaskCard({
@@ -10,8 +12,8 @@ class TaskCard extends StatelessWidget {
     required this.textDescription,
     required this.time,
     required this.press,
-required this.taskCompleted,
-      required this.onChanged,
+    required this.taskCompleted,
+    required this.onChanged,
   });
 
   final String textName, textDescription, time;
@@ -39,7 +41,7 @@ required this.taskCompleted,
                 children: [
                   GestureDetector(
                     onTap: () {},
-                    child:  Checkbox(value: taskCompleted, onChanged: onChanged),
+                    child: Checkbox(value: taskCompleted, onChanged: onChanged),
                     // child: Container(
                     //   height: 25,
                     //   width: 25,
@@ -81,8 +83,21 @@ required this.taskCompleted,
               Row(
                 children: [
                   GestureDetector(
-                    onTap: () {},
-                    child: Container(
+                    onTap: () {
+                      Get.defaultDialog(
+                          content: Container(
+                        width: 350,
+                        //###
+                        child: AddTask(
+                          editMode: true,
+                          taskIndex: 0,
+                        ), //###
+                      ));
+                    },
+                    child: const Icon(
+                      Icons.edit_note_outlined,
+                      color: grey,
+                    ) /* Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: grey),
                         borderRadius: BorderRadius.circular(4),
@@ -91,28 +106,22 @@ required this.taskCompleted,
                         Icons.edit_note_outlined,
                         color: grey,
                       ),
-                    ),
+                    ) */
+                    ,
                   ),
                   const SizedBox(
                     width: AppSize.smallDefaultSpace,
                   ),
                   GestureDetector(
                     onTap: press,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: grey),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: const Icon(
-                        Icons.delete_outlined,
-                        color: grey,
-                      ),
+                    child: const Icon(
+                      Icons.delete_outlined,
+                      color: grey,
                     ),
                   )
                 ],
               )
             ],
-          
           ),
         ),
       ),
