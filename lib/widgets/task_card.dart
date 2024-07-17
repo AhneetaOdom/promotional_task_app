@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:promotional_task3/screens/task_details.dart';
 
+import '../controllers/homepage_controller.dart';
 import '../utils/constants/colors.dart';
 import '../utils/constants/size.dart';
 import 'reusable_widgets/addtask_dialog_widget.dart';
+
 
 class TaskCard extends StatelessWidget {
   const TaskCard({
@@ -23,6 +26,7 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final HomePageController controller = Get.put(HomePageController());
     return Padding(
       padding: const EdgeInsets.only(top: AppSize.mediumDefaultSpace),
       child: Container(
@@ -56,25 +60,52 @@ class TaskCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        time,
-                        style: TextStyle(
-                            fontSize: AppSize.fontSizeXs,
-                            fontWeight: AppSize.fontWeightNormal,
-                            color: grey50),
+                      GestureDetector(
+                        onTap: () {
+                            Get.to(TaskDetails(
+                              textName: textName,
+                              textDescription: textDescription,
+                              time: time,
+                              taskCompleted: taskCompleted));
+                        },
+                        child: Text(
+                          time,
+                          style: TextStyle(
+                              fontSize: AppSize.fontSizeXs,
+                              fontWeight: AppSize.fontWeightNormal,
+                              color: grey50),
+                        ),
                       ),
-                      Text(
-                        textName,
-                        style: const TextStyle(
-                            fontSize: AppSize.fontSizeXs,
-                            fontWeight: AppSize.fontWeightNormal,
-                            color: grey),
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(TaskDetails(
+                              textName: textName,
+                              textDescription: textDescription,
+                              time: time,
+                              taskCompleted: taskCompleted));
+                        },
+                        child: Text(
+                          textName,
+                          style: const TextStyle(
+                              fontSize: AppSize.fontSizeXs,
+                              fontWeight: AppSize.fontWeightNormal,
+                              color: grey),
+                        ),
                       ),
-                      Text(
-                        textDescription,
-                        style: const TextStyle(
-                            fontSize: AppSize.fontSizeSm,
-                            fontWeight: AppSize.fontWeightBold),
+                      GestureDetector(
+                        onTap: () {
+                           Get.to(TaskDetails(
+                              textName: textName,
+                              textDescription: textDescription,
+                              time: time,
+                              taskCompleted: taskCompleted));
+                        },
+                        child: Text(
+                          textDescription,
+                          style: const TextStyle(
+                              fontSize: AppSize.fontSizeSm,
+                              fontWeight: AppSize.fontWeightBold),
+                        ),
                       ),
                     ],
                   ),
@@ -85,7 +116,7 @@ class TaskCard extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       Get.defaultDialog(
-                          content: Container(
+                          content: SizedBox(
                         width: 350,
                         //###
                         child: AddTask(

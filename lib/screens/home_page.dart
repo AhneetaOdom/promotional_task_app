@@ -21,7 +21,7 @@ class Home extends StatelessWidget {
         backgroundColor: primaryColor,
         onPressed: () {
           Get.defaultDialog(
-              content: Container(
+              content: SizedBox(
             width: 350,
             child: AddTask(),
           ));
@@ -89,7 +89,7 @@ class Home extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(top: 15, bottom: 15),
+                padding:const  EdgeInsets.only(top: 15, bottom: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

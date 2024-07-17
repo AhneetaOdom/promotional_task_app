@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:promotional_task3/controllers/homepage_controller.dart';
-import 'package:promotional_task3/utils/constants/colors.dart';
+
 import 'package:promotional_task3/utils/constants/size.dart';
 import 'package:promotional_task3/widgets/reusable_widgets/dialog_button.dart';
 
